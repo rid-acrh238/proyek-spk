@@ -1,0 +1,8 @@
+ /* Menambahkan style untuk link sidebar yang aktif */
+        .nav-link.active {
+            background-color: #374151; /* Tailwind gray-700 */
+            color: #ffffff; /* white */
+            font-weight: 600;
+            border-left: 4px solid #8b5cf6; /* Tailwind purple-500 */
+            padding-left: calc(1rem - 4px); /* 1rem (px-4) - 4px (border) */
+        }

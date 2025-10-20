@@ -1,0 +1,138 @@
+{
+  "info": {
+    "name": "SPK Node.js API",
+    "_postman_id": "d47ac10b-58cc-4372-a567-0e02b2c3d479",
+    "description": "Postman Collection untuk menguji semua endpoint SPK Node.js (Auth, SPK, WP).",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth",
+      "item": [
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/auth/register", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "register"] }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Content-Type", "value": "application/json" }],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/auth/login", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "login"] }
+          }
+        },
+        {
+          "name": "Check Token",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/auth/checkSession", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "checkSession"] }
+          }
+        },
+        {
+          "name": "Logout",
+          "request": {
+            "method": "POST",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/auth/logout", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "auth", "logout"] }
+          }
+        }
+      ]
+    },
+    {
+      "name": "SPK",
+      "item": [
+        {
+          "name": "Get Kriteria",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/spk/kriteria", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "kriteria"] }
+          }
+        },
+        {
+          "name": "Add Kriteria",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nama_kriteria\": \"Harga\",\n  \"bobot\": 0.4,\n  \"tipe\": \"cost\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/spk/kriteria", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "kriteria"] }
+          }
+        },
+        {
+          "name": "Get Alternatif",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/spk/alternatif", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "alternatif"] }
+          }
+        },
+        {
+          "name": "Add Alternatif",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"nama_obat\": \"Captopril\"\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/spk/alternatif", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "alternatif"] }
+          }
+        },
+        {
+          "name": "Get Nilai",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/spk/nilai", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "nilai"] }
+          }
+        },
+        {
+          "name": "Add Nilai",
+          "request": {
+            "method": "POST",
+            "header": [
+              { "key": "Content-Type", "value": "application/json" },
+              { "key": "Authorization", "value": "Bearer {{token}}" }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"id_alternatif\": 1,\n  \"id_kriteria\": 2,\n  \"nilai\": 0.8\n}"
+            },
+            "url": { "raw": "http://localhost:3000/api/spk/nilai", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "nilai"] }
+          }
+        },
+        {
+          "name": "Hitung WP",
+          "request": {
+            "method": "GET",
+            "header": [{ "key": "Authorization", "value": "Bearer {{token}}" }],
+            "url": { "raw": "http://localhost:3000/api/spk/hitung", "protocol": "http", "host": ["localhost"], "port": "3000", "path": ["api", "spk", "hitung"] }
+          }
+        }
+      ]
+    }
+  ],
+  "variable": [{ "key": "token", "value": "" }]
+}
